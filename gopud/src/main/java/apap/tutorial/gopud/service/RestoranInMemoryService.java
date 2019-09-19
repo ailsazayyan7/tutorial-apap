@@ -35,5 +35,11 @@ public class RestoranInMemoryService implements RestoranService {
 		return model;
 	}
 
+	@Override
+	public void deleteRestoran(RestoranModel restoran){
+		listRestoran.remove(restoran);
+		boolean status = true;
+	}
+
 	
 }

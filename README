@@ -81,3 +81,18 @@ berhasil diubah.
 
 menambahkan fungsi update di RestoranController yang mengambil idRestoran dan nomorTelepon dari link untuk ditampilkan dan diubah nomorTeleponnya.
 Kemudian buat file update-telepon.html untuk memberi informasi bahwa data telah diubah
+
+3. Tambahkan fitur untuk melakukan delete Restoran berdasarkan idRestoran. Misalnya,
+setelah melakukan add Restoran pada soal nomor 1 bab View Template dan melakukan update
+seperti pada soal nomor 2 bab Latihan, cobalah untuk melakukan delete data tersebut dengan
+mengakses halaman localhost:8080/restoran/delete/id/1. Tampilkan sebuah halaman yang
+memberikan informasi bahwa data tersebut telah berhasil dihapus.
+Notes: Jika idRestoran tidak diberikan atau tidak ditemukan kembalikan halaman error yang
+berisi informasi bahwa idRestoran kosong atau tidak ditemukan dan proses
+view/update/delete dibatalkan.
+
+tambahkan method delete di interface RestoranService dan implements di RestoranInMemoryService.
+buat method baru lagi di RestoranController dan buat 2 kondisi, id ditemukan atau id tidak ditemukan.
+jika ditemukan, lakukan fungsi delete yang telah dibuat di RestoranService.
+
+buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error

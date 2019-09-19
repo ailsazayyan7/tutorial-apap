@@ -97,6 +97,23 @@ public class RestoranController{
     }
 
     // URL mapping delete resto
-    
+	@RequestMapping("restoran/delete/id/{idRestoran}")
+	public String delete(@PathVariable("idRestoran") String idRestoran, Model model){
+		// Mengambil objek RestoranModel yang dituju
+		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
+		if (idRestoran.equals(null) || idRestoran.equals("")){
+			return "error";}
+		else{
+
+			// Add model restoran ke "resto" untuk dirender
+			model.addAttribute("resto", restoran);
+
+			restoranService.deleteRestoran(restoran);
+
+			// Return view template
+			return "delete";
+		}
+
+	}
     
 }
