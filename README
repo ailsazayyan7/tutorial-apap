@@ -1,11 +1,7 @@
 # Tutorial APAP
 
 ## Authors
-* **ailsa.zayyan** - *1706074682* - *APAP-C# Tutorial APAP
-
-## Authors
-* **ailsa.zayyan** - *1706074682* - *APAP-C*
-
+* **ailsa.zayyan** - *1706074682* - *APAP-C
 ---
 ## Tutorial 1
 ### What I have learned today
@@ -82,3 +78,6 @@ untuk mengubah nomorTelepon objek Restoran tersebut menjadi 911 dengan mengakses
 halaman localhost:8080/restoran/update/id-restoran/1/nomor-telepon/911.
 Tampilkan juga sebuah halaman yang memberikan informasi bahwa data tersebut telah
 berhasil diubah.
+
+menambahkan fungsi update di RestoranController yang mengambil idRestoran dan nomorTelepon dari link untuk ditampilkan dan diubah nomorTeleponnya.
+Kemudian buat file update-telepon.html untuk memberi informasi bahwa data telah diubah
