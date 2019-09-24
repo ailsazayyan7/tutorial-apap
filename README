@@ -29,8 +29,6 @@ tentang penulisan README.md pada github pada link
 [berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
 
 
-
-
 ## Tutorial 2
 Pertanyaan 1: Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:
 http://localhost:8080/restoran/add?idRestoran=1&nama=PanyuFC&alamat=Kantin%20Fasilkom&nomorTelepon=14022
@@ -96,3 +94,5 @@ buat method baru lagi di RestoranController dan buat 2 kondisi, id ditemukan ata
 jika ditemukan, lakukan fungsi delete yang telah dibuat di RestoranService.
 
 buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
+=======
+[berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
