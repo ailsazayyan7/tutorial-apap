@@ -1,8 +1,7 @@
 # Tutorial APAP
 
 ## Authors
-* **ailsa.zayyan** - *1706074682* - *APAP-C*
-
+* **ailsa.zayyan** - *1706074682* - *APAP-C
 ---
 ## Tutorial 1
 ### What I have learned today
@@ -27,4 +26,73 @@ dikemudian hari, dan tambahkan tulisan yang membuat Anda mengerti)
 - [ ] Penggunaan fitur-fitur github secara lancar
 (Anda dapat membuat tampilan code dalam README.md menjadi lebih baik. Cari tahu lebih dalam
 tentang penulisan README.md pada github pada link
+[berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
+
+
+## Tutorial 2
+Pertanyaan 1: Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:
+http://localhost:8080/restoran/add?idRestoran=1&nama=PanyuFC&alamat=Kantin%20Fasilkom&nomorTelepon=14022
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+- Ketika pertama kali membuka link, link tersebut tidak dapat diakses karena saya belum membuat view add-restoran, sedangkan saya telah mengetikkan perintah "return add-restoran"
+
+Pertanyaan 2: Cobalah untuk menambahkan sebuah restoran dengan mengakses link
+berikut:
+http://localhost:8080/restoran/add?idRestoran=2&nama=KentukuFC&alamat=Kantin%20FIK
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+- Terjadi error ketika membuka link tersebut karena nomor telepon tidak didefinisikan di link. Padahal nomor telepon adalah constructor dari objek restoran.
+
+Pertanyaan 3: Jika Papa APAP ingin melihat restoran PanyuFC, link apa yang harus diakses?
+- http://localhost:8080/restoran/view?idRestoran=1
+
+Pertanyaan 4: Tambahkan 1 contoh restoran lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/restoran/viewall, apa yang akan ditampilkan? 
+Sertakan juga bukti screenshotmu.
+- ![bukti](src/main/resource/static/ssaddresto.jpg
+
+
+LATIHAN
+1. Pada RestoranController tambahkan sebuah method view Restoran dengan menggunakan
+Path Variable. Misalnya, kamu ingin memasukkan data sebuah Restoran yang memiliki
+idRestoran 1, untuk melihat data yang baru dimasukkan tersebut, user dapat mengakses
+halaman localhost:8080/restoran/view/id-restoran/1.
+
+Saya menambahkan code berikut dibagian RestoranController
+    // URL mapping id-restoran
+    @RequestMapping("/restoran/view/id-restoran/{idRestoran}")
+    public String viewId(@PathVariable("idRestoran") String idRestoran, Model model){
+    	// Mengambil objek RestoranModel yang dituju
+        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
+
+        // Add model restoran ke "resto" untuk dirender
+        model.addAttribute("resto", restoran);
+
+        // Return view template
+        return "view-restoran";
+    }
+
+
+2. Tambahkan fitur untuk melakukan update nomorTelepon Restoran berdasarkan idRestoran.
+Misalnya, setelah melakukan add Restoran pada soal nomor 1 bab View Template, cobalah
+untuk mengubah nomorTelepon objek Restoran tersebut menjadi 911 dengan mengakses
+halaman localhost:8080/restoran/update/id-restoran/1/nomor-telepon/911.
+Tampilkan juga sebuah halaman yang memberikan informasi bahwa data tersebut telah
+berhasil diubah.
+
+menambahkan fungsi update di RestoranController yang mengambil idRestoran dan nomorTelepon dari link untuk ditampilkan dan diubah nomorTeleponnya.
+Kemudian buat file update-telepon.html untuk memberi informasi bahwa data telah diubah
+
+3. Tambahkan fitur untuk melakukan delete Restoran berdasarkan idRestoran. Misalnya,
+setelah melakukan add Restoran pada soal nomor 1 bab View Template dan melakukan update
+seperti pada soal nomor 2 bab Latihan, cobalah untuk melakukan delete data tersebut dengan
+mengakses halaman localhost:8080/restoran/delete/id/1. Tampilkan sebuah halaman yang
+memberikan informasi bahwa data tersebut telah berhasil dihapus.
+Notes: Jika idRestoran tidak diberikan atau tidak ditemukan kembalikan halaman error yang
+berisi informasi bahwa idRestoran kosong atau tidak ditemukan dan proses
+view/update/delete dibatalkan.
+
+tambahkan method delete di interface RestoranService dan implements di RestoranInMemoryService.
+buat method baru lagi di RestoranController dan buat 2 kondisi, id ditemukan atau id tidak ditemukan.
+jika ditemukan, lakukan fungsi delete yang telah dibuat di RestoranService.
+
+buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
+=======
 [berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
