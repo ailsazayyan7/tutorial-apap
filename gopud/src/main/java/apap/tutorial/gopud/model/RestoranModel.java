@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name="restoran")
 
-public class RestoranModel implements Serializable {
+public class RestoranModel implements Serializable, Comparable<RestoranModel> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,5 +69,10 @@ public class RestoranModel implements Serializable {
 	}
 	public void setNomorTelepon(Integer nomorTelepon) {
 		this.nomorTelepon = nomorTelepon;
+	}
+
+	@Override
+	public int compareTo(RestoranModel o) {
+		return this.nama.compareTo(o.nama);
 	}
 }

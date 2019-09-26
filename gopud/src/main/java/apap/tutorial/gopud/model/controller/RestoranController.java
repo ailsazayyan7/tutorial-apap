@@ -1,4 +1,6 @@
 package apap.tutorial.gopud.model.controller;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,8 +90,10 @@ public class RestoranController{
         //Mengambil semua objek RestoranModel yang ada
         List<RestoranModel> listRestoran = restoranService.getRestoranList();
 
+		Collections.sort(listRestoran);
         // Add model restoran ke "resto" untuk di render
         model.addAttribute("restoList", listRestoran);
+
 
         // Return view template
         return "viewall-restoran";
