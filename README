@@ -96,3 +96,24 @@ jika ditemukan, lakukan fungsi delete yang telah dibuat di RestoranService.
 buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
 =======
 [berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
+
+
+## Tutorial 3
+### gopus
+#### PERTANYAAN
+1. Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari
+method tersebut?
+Untuk mencari semua menu yang dimiliki oleh restoran berdasarkan id nya. Nantinya akan digunakan di MenuServiceImpl.java
+method tersebut memiliki parameter idRestoran yang ingin dicari, kemudian me return List Menu yang dimiliki restoran.
+2. Pada class RestoranController, jelaskan perbedaan method addRestoranFormPage dan
+addRestoranSubmit?
+addRestoranFormPage merupakan method untuk menampilkan form menambah restoran. method tersebut me return html page
+"form-add-restoran", sedangkan addRestoranSubmit merupakan method yang akan dijalankan ketika tombol submit diklik sehingga
+method tersebut akan menambahkan data-data restoran yang telah diinput pada form sebelumnya melalui method addRestoran
+yang dimiliki oleh restoranService. Selain itu, method addRestoranSubmit akan mengembalikan html page add-restoran.html
+3. Jelaskan apa kegunaan dari JPA Repository?
+
+4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan
+MenuModel dibuat?
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+#### LATIHAN
