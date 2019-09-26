@@ -19,6 +19,7 @@
 			<h3 th:text="'Harga: ' + ${menu.harga}"></h3>
 			<h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>
 			<h3 th:text="'Durasi Penyajian: '+ ${menu.durasiMasak}"></h3>
+			<td> <a th:href="@{/menu/change/}+${menu.id}"> Change Menu </a></td>
 			</br>
 		</div>
 		</div>

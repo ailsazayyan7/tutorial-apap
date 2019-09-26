@@ -112,8 +112,22 @@ addRestoranFormPage merupakan method untuk menampilkan form menambah restoran. m
 method tersebut akan menambahkan data-data restoran yang telah diinput pada form sebelumnya melalui method addRestoran
 yang dimiliki oleh restoranService. Selain itu, method addRestoranSubmit akan mengembalikan html page add-restoran.html
 3. Jelaskan apa kegunaan dari JPA Repository?
-
+JPA Repository digunakan untuk memasukkan objek-objek Java ke dalam sebuah relational
+database. Kemudian JPA Repo juga dapat digunakan untuk mengatur database tanpa menggunakan query
 4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan
 MenuModel dibuat?
+terdapat @OneToMany dan @ManyToOne yang menunjukkan relasi model-model tersebut.
+@OneToMany yang ada di RestoranModel menunjukkan bahwa satu restoran dapat memiliki banyak menu, dan
+@ManyToOne yang ada di MenuModel menunjukkan bahwa banyak menu dapat dimiliki satu restoran.
 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+FetchType.LAZY digunakan saat kita hanya ingin melakukan fetch saat kita membutuhkan datanya. Biasanya, FetchType
+ini digunakan untuk relasi one-to-many atau many-to-many.
+
+Sebaliknya, FetchType.EAGER digunakan saat kita ingin
+data yang akan di-*fetch* sudah ada saat kita membutuhkannya, jadi ia melakukan fetch seawal mungkin. Biasanya,
+FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
+
+CascadeType.ALL digunakan agar segala perubahan yang terjadi pada suatu entitas akan terjadi juga pada entitas
+yang memiliki relasi ini dengannya. Perubahan dapat terjadi karena DELETE, UPDATE, dan sebagainya. Sebagai contoh,
+ketika kita menghapus suatu restoran, maka semua menu yang terkait dengan restoran tersebut juga dapat dihapus.
 #### LATIHAN
