@@ -14,4 +14,6 @@ public interface MenuService {
     Optional<MenuModel> getMenuByIdMenu(Long id);
 
     MenuModel changeMenu(MenuModel menuModel);
+
+    void deleteMenu(MenuModel Menu);
 }

@@ -136,12 +136,13 @@ public class RestoranController{
 		if (listMenu.size() == 0) {
 			model.addAttribute("resto", restoran);
 			restoranService.deleteRestoran(restoran);
-			return "delete-restoran-success";
+			return "delete";
 		} else {
 			model.addAttribute("resto", restoran);
-			return "delete-restoran-error";
+			return "error";
 
 		}
+
 
 	}
 }

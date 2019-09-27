@@ -20,10 +20,12 @@
 				<h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>
 				<h3 th:text="'Durasi Penyajian: '+ ${menu.durasiMasak}"></h3>
 				<td> <a th:href="@{/menu/change/}+${menu.id}"> Change Menu </a></td>
+				<td> <a th:href="@{/menu/delete/}+${menu.id}"> Delete Menu </a></td>
 				</br>
 			</div>
 		</div>
+		<br>
+		<td> <a th:href="@{/restoran/delete/}+${resto.idRestoran}"> Delete Restoran </a> </td> <br>
 		<td> <a th:href="@{/menu/add/}+${resto.idRestoran}"> Add Menu </a></td>
-		<td> <a th:href="@{/restoran/delete/}+${resto.idRestoran}"> Delete Restoran </a> </td>
 	</body>
 </html>

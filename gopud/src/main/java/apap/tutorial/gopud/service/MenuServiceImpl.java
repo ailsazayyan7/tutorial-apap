@@ -45,4 +45,7 @@ public class MenuServiceImpl implements MenuService {
             return null;
         }
     }
+
+    public void deleteMenu(MenuModel menu) { menuDB.delete(menu); }
+
 }
