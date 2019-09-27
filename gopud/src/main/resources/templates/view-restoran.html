@@ -14,15 +14,16 @@
 		<h2> Daftar Menu </h2>
 
 		<div th:if="${menuList != null }">
-		<div th:each="menu : ${menuList}">
-			<h3 th:text="'Nama: ' + ${menu.nama}"></h3>
-			<h3 th:text="'Harga: ' + ${menu.harga}"></h3>
-			<h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>
-			<h3 th:text="'Durasi Penyajian: '+ ${menu.durasiMasak}"></h3>
-			<td> <a th:href="@{/menu/change/}+${menu.id}"> Change Menu </a></td>
-			</br>
+			<div th:each="menu : ${menuList}">
+				<h3 th:text="'Nama: ' + ${menu.nama}"></h3>
+				<h3 th:text="'Harga: ' + ${menu.harga}"></h3>
+				<h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>
+				<h3 th:text="'Durasi Penyajian: '+ ${menu.durasiMasak}"></h3>
+				<td> <a th:href="@{/menu/change/}+${menu.id}"> Change Menu </a></td>
+				</br>
+			</div>
 		</div>
-		</div>
-			<td> <a th:href="@{/menu/add/}+${resto.idRestoran}"> Add Menu </a></td>
+		<td> <a th:href="@{/menu/add/}+${resto.idRestoran}"> Add Menu </a></td>
+		<td> <a th:href="@{/restoran/delete/}+${resto.idRestoran}"> Delete Restoran </a> </td>
 	</body>
 </html>

@@ -35,14 +35,12 @@ public class MenuController {
     @RequestMapping(value = "menu/add", method = RequestMethod.POST)
     private String addProductSubmit(@ModelAttribute MenuModel menu, Model model){
         menuService.addMenu(menu);
-
         model.addAttribute("nama", menu.getNama());
-
         return "add-menu";
     }
 
     //API yang digunakan untuk menuju halaman form change menu
-    @RequestMapping(value="menu/change/{idMenu}", method = RequestMethod.GET)
+    @RequestMapping(value="menu/change/{id}", method = RequestMethod.GET)
     public String changeMenuFormPage(@PathVariable Long id, Model model){
         //Mengambil existing data restoran
         MenuModel existingMenu = menuService.getMenuByIdMenu(id).get();
@@ -51,7 +49,7 @@ public class MenuController {
     }
 
     //API yang digunakan untuk submit form change menu
-    @RequestMapping(value = "menu/change/{idMenu}", method = RequestMethod.POST)
+    @RequestMapping(value = "menu/change/{id}", method = RequestMethod.POST)
     public String changeMenuFormSubmit(@PathVariable Long id, @ModelAttribute MenuModel menu, Model model){
         MenuModel newMenuData = menuService.changeMenu(menu);
         model.addAttribute("menu", newMenuData);

@@ -7,9 +7,9 @@
 
 <body>
 <h2> Change Data Menu </h2>
-<form th:action="@{/menu/change/{idMenu}(idRestoran=${menu.id})}" th:object="${menu}" method="POST">
+<form th:action="@{/menu/change/{idMenu}(idMenu=${menu.id})}" th:object="${menu}" method="POST">
     <input type="hidden" th:field="${menu.id}" />
-    Nama Restoran: <br>
+    Nama Menu: <br>
     <input type="text" name="nama" th:value="${menu.nama}" />
     <br>
     Harga: <br>

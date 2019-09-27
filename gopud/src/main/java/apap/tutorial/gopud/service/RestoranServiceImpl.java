@@ -46,4 +46,7 @@ public class RestoranServiceImpl implements RestoranService {
         }
     }
 
+    @Override
+    public void deleteRestoran(RestoranModel restoran) { restoranDB.delete(restoran); }
+
 }

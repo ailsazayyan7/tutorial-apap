@@ -125,4 +125,23 @@ public class RestoranController{
 		// Return view template
 		return "update-telepon";
 	}
+
+	@RequestMapping(value = "restoran/delete/{idRestoran}")
+	public String viewDeleteRestoran(
+			@PathVariable(value = "idRestoran") Long idRestoran,
+			Model model
+	) {
+		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+		List<MenuModel> listMenu = menuService.findAllMenuByIdRestoran(idRestoran);
+		if (listMenu.size() == 0) {
+			model.addAttribute("resto", restoran);
+			restoranService.deleteRestoran(restoran);
+			return "delete-restoran-success";
+		} else {
+			model.addAttribute("resto", restoran);
+			return "delete-restoran-error";
+
+		}
+
+	}
 }
