@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(pageTitle='ChangeDataRestoran')"></nav>
 <h2> Change Data Restoran </h2>
 <form th:action="@{/restoran/change/{idRestoran}(idRestoran=${restoran.idRestoran})}" th:object="${restoran}" method="POST">
     <input type="hidden" th:field="${restoran.idRestoran}" />

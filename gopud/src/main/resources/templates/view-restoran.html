@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-	<head>
-		<title>View Restoran</title>
-		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-	</head>
-	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<div class="container-fluid">
-			<h2>Informasi Restoran</h2>
-			<h3 th:text="'ID Restoran: ' + ${resto.idRestoran}"></h3>
-			<h3 th:text="'Nama Restoran: ' + ${resto.nama}"></h3>
-			<h3 th:text="'Alamat Restoran: ' + ${resto.alamat}"></h3>
-			<h3 th:text="'Nomor Telp. Restoran: '+ ${resto.nomorTelepon}"></h3>
+<head>
+	<title>View Restoran</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar(pageTitle='View Restoran')"></nav>
+	<div class="container-fluid">
+		<h2>Informasi Restoran</h2>
+		<h3 th:text="'ID Restoran: ' + ${resto.idRestoran}"></h3>
+		<h3 th:text="'Nama Restoran: ' + ${resto.nama}"></h3>
+		<h3 th:text="'Alamat Restoran: ' + ${resto.alamat}"></h3>
+		<h3 th:text="'Nomor Telp. Restoran: '+ ${resto.nomorTelepon}"></h3>
 
-			<form th:action="@{/restoran/change/}+${resto.idRestoran}">
-				<button class="btn btn-sm btn-primary">
-					Change Data Restoran
-				</button>
-			</form>
+		<form th:action="@{/restoran/change/}+${resto.idRestoran}">
+			<button class="btn btn-sm btn-primary">
+				Change Data Restoran
+			</button>
+		</form>
 
-			<h2> Daftar Menu </h2>
-			<form th:action="@{/menu/delete}" th:object="${resto}" method="POST">
-				<table>
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Nama</th>
-							<th>Harga</th>
-							<th>Deskripsi</th>
-							<th>Durasi Penyajian</th>
-							<th>Aksi</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="menu, iterationStatus : *{listMenu}"
-							th:style="${iterationStatus.even} ? 'color: blue'">
-							<td th:text="${iterationStatus.count}"> </td>
-							<td th:text="${menu.nama}"></td>
-							<td th:if="${menu.harga} >= 10000"> Diatas 10k</td>
-							<td th:unless="${menu.harga} >= 10000"> Dibawah 10k</td>
-							<td th:text="${menu.deskripsi}"></td>
-							<td th:text="${menu.durasiMasak}"></td>
-							<td>
-								<input type="checkbox" th:field="*{listMenu}" th:value="${menu.id}"/>
-								<label th:for="${#ids.prev('listMenu')}">Hapus</label>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<button type="submit" class="btn btn-sm btn-danger">Hapus yang dipilih</button>
-			</form>
+		<h2> Daftar Menu </h2>
+		<form th:action="@{/menu/delete}" th:object="${resto}" method="POST">
+			<table>
+				<thead>
+				<tr>
+					<th>No</th>
+					<th>Nama</th>
+					<th>Harga</th>
+					<th>Deskripsi</th>
+					<th>Durasi Penyajian</th>
+					<th>Aksi</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="menu, iterationStatus : *{listMenu}"
+					th:style="${iterationStatus.even} ? 'color: blue'">
+					<td th:text="${iterationStatus.count}"> </td>
+					<td th:text="${menu.nama}"></td>
+					<td th:if="${menu.harga} >= 10000"> Diatas 10k</td>
+					<td th:unless="${menu.harga} >= 10000"> Dibawah 10k</td>
+					<td th:text="${menu.deskripsi}"></td>
+					<td th:text="${menu.durasiMasak}"></td>
+					<td>
+						<input type="checkbox" th:field="*{listMenu}" th:value="${menu.id}"/>
+						<label th:for="${#ids.prev('listMenu')}">Hapus</label>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<button type="submit" class="btn btn-sm btn-danger">Hapus yang dipilih</button>
+		</form>
 
 		<!--	<div th:if="${menuList != null }">
 				<table>
@@ -74,19 +74,18 @@
 						<td th:unless="${menu.harga} >= 10000"> Dibawah 10k</td>
 						<td th:text="${menu.deskripsi}"></td>
 						<td th:text="${menu.durasiMasak}"></td>
-
 					</tr>
 					</tbody>
 				</table>
 			</div> -->
-			<br>
-			<form th:action="@{/menu/add/}+${resto.idRestoran}">
-				<button class="btn btn-sm btn-primary">
-					Add Menu
-				</button>
-			</form>
-		</div>
-		<!--<td> <a th:href="@{/restoran/delete/}+${resto.idRestoran}"> Delete Restoran </a> </td> <br>
-		<td> <a th:href="@{/menu/add/}+${resto.idRestoran}"> Add Menu </a></td>-->
-	</body>
+		<br>
+		<form th:action="@{/menu/add/}+${resto.idRestoran}">
+			<button class="btn btn-sm btn-primary">
+				Add Menu
+			</button>
+		</form>
+	</div>
+	<!--<td> <a th:href="@{/restoran/delete/}+${resto.idRestoran}"> Delete Restoran </a> </td> <br>
+	<td> <a th:href="@{/menu/add/}+${resto.idRestoran}"> Add Menu </a></td>-->
+</body>
 </html>

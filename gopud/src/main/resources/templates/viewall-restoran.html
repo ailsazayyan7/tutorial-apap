@@ -7,7 +7,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <nav th:replace="fragments/fragment :: navbar(pageTitle='View All Restoran')"></nav>
     <h2>Daftar Seluruh Restoran</h2>
         <div th:each="resto : ${restoList}">
         <h3 th:text="'ID Restoran: ' + ${resto.idRestoran}"></h3>

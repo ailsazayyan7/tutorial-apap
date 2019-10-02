@@ -6,7 +6,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
-<h2 th:text="'Restoran dengan id ' + ${idRestoran} + ' tidak ditemukan'"></h2>
+<nav th:replace="fragments/fragment :: navbar(pageTitle='Error')"></nav>
+<h2 th:text="'Restoran tidak ditemukan'"></h2>
 </body>
 </html>

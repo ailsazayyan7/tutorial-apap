@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(pageTitle='ChangeMenu')"></nav>
 <h2> Change Data Menu </h2>
 <form th:action="@{/menu/change/{idMenu}(idMenu=${menu.id})}" th:object="${menu}" method="POST">
     <input type="hidden" th:field="${menu.id}" />

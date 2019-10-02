@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(pageTitle='AddMenu')"></nav>
 <h2 th:text="'Menu '+ ${nama} + ' berhasil ditambahkan'"></h2>
 </body>
 </html>

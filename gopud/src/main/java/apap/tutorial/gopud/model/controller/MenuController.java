@@ -63,7 +63,6 @@ public class MenuController {
         model.addAttribute("menu", menu);
         menuService.deleteMenu(menu);
         return "delete-menu";
-
     }*/
     @RequestMapping(value = "/menu/delete", method = RequestMethod.POST)
     private String delete(@ModelAttribute RestoranModel restoran, Model model){
@@ -74,3 +73,34 @@ public class MenuController {
     }
 
 }
+
+    /*//nomor 3
+    @RequestMapping(value = "menu/add/{idRestoran}", method = RequestMethod.POST, params = {"addRow"})
+    private String addRow(@PathVariable(value="idRestoran") Long idRestoran, @ModelAttribute RestoranModel restoran, Model model) {
+        MenuModel menu = new MenuModel();
+        restoran.getListMenu().add(menu);
+        model.addAttribute("restoran", restoran);
+        model.addAttribute("idRestoran", idRestoran);
+        return "form-add-menu";
+    }
+
+    @RequestMapping(value = "product/add/{idRestoran}", method = RequestMethod.POST, params = {"removeRow"})
+    private String removeRow(@PathVariable(value="idRestoran") Long idRestoran, @ModelAttribute RestoranModel restoran, Model model, HttpServletRequest req) {
+        Integer rowId = Integer.valueOf(req.getParameter("removeRow"));
+        restoran.getListMenu().remove(rowId.intValue());
+        model.addAttribute("idRestoran", idRestoran);
+        model.addAttribute("restoran", restoran);
+        return "form-add-menu";
+    }
+
+    @RequestMapping(value = "product/add/{idRestoran}", method = RequestMethod.POST, params={"save"})
+    private String addProductSubmit(@PathVariable(value = "idRestoran") Long idRestoran, @ModelAttribute RestoranModel restoran, ModelMap model){
+        RestoranModel RestoranLama = restoranService.getRestoranByIdRestoran(idRestoran);
+        model.addAttribute("idRestoran", idRestoran);
+        for (MenuModel menu : restoran.getListMenu()) {
+            menu.setRestoran(RestoranLama);
+            menuService.addMenu(menu);
+        }
+        model.clear();
+        return "add-menu";
+    }*/

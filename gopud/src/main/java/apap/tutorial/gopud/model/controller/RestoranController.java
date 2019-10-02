@@ -49,7 +49,7 @@ public class RestoranController{
 	public String view(
 			// Request Parameter untuk dipass
 			@RequestParam(value = "idRestoran") Long idRestoran, Model model
-			) {
+	) {
 
 		//Mengambil objek RestoranModel yang dituju
 		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
@@ -81,37 +81,36 @@ public class RestoranController{
 
 		return "change-restoran";
 	}
-    // URL mapping viewAll
-    @RequestMapping("restoran/viewall")
-    public String viewall(Model model){
+	// URL mapping viewAll
+	@RequestMapping("restoran/viewall")
+	public String viewall(Model model){
 
-        //Mengambil semua objek RestoranModel yang ada
-        List<RestoranModel> listRestoran = restoranService.getRestoranList();
+		//Mengambil semua objek RestoranModel yang ada
+		List<RestoranModel> listRestoran = restoranService.getRestoranList();
 
 		Collections.sort(listRestoran);
-        // Add model restoran ke "resto" untuk di render
-        model.addAttribute("restoList", listRestoran);
+		// Add model restoran ke "resto" untuk di render
+		model.addAttribute("restoList", listRestoran);
 
+		// Return view template
+		return "viewall-restoran";
+	}
 
-        // Return view template
-        return "viewall-restoran";
-    }
+	// URL mapping id-restoran
+	@RequestMapping("/restoran/view/id-restoran/{idRestoran}")
+	public String viewId(@PathVariable("idRestoran") Long idRestoran, Model model){
+		// Mengambil objek RestoranModel yang dituju
+		Optional<RestoranModel> restoran = restoranService.getRestoranByIdRestoran(idRestoran);
 
-    // URL mapping id-restoran
-    @RequestMapping("/restoran/view/id-restoran/{idRestoran}")
-    public String viewId(@PathVariable("idRestoran") Long idRestoran, Model model){
-    	// Mengambil objek RestoranModel yang dituju
-        Optional<RestoranModel> restoran = restoranService.getRestoranByIdRestoran(idRestoran);
+		// Add model restoran ke "resto" untuk dirender
+		model.addAttribute("resto", restoran);
+		// Return view template
+		return "view-restoran";
+	}
 
-        // Add model restoran ke "resto" untuk dirender
-        model.addAttribute("resto", restoran);
-        // Return view template
-        return "view-restoran";
-    }
-
-    //URL mapping update nomor telepon
-    @RequestMapping("restoran/update/id-restoran/{idRestoran}/nomor-telepon/{nomorTelepon}")
-    public String update(@PathVariable("nomorTelepon") Integer nomorTelepon, @PathVariable("idRestoran") Long idRestoran, Model model) {
+	//URL mapping update nomor telepon
+	@RequestMapping("restoran/update/id-restoran/{idRestoran}/nomor-telepon/{nomorTelepon}")
+	public String update(@PathVariable("nomorTelepon") Integer nomorTelepon, @PathVariable("idRestoran") Long idRestoran, Model model) {
 		// Mengambil objek RestoranModel yang dituju
 		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
 		restoran.setNomorTelepon(nomorTelepon);
