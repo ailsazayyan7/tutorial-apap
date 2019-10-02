@@ -139,7 +139,7 @@ public class RestoranController{
 			return "delete";
 		} else {
 			model.addAttribute("resto", restoran);
-			return "error";
+			return "delete-restoran-error";
 
 		}
 
