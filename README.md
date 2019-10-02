@@ -96,3 +96,38 @@ jika ditemukan, lakukan fungsi delete yang telah dibuat di RestoranService.
 buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
 =======
 [berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
+
+
+## Tutorial 3
+### gopus
+#### PERTANYAAN
+1. Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari
+method tersebut?
+Untuk mencari semua menu yang dimiliki oleh restoran berdasarkan id nya. Nantinya akan digunakan di MenuServiceImpl.java
+method tersebut memiliki parameter idRestoran yang ingin dicari, kemudian me return List Menu yang dimiliki restoran.
+2. Pada class RestoranController, jelaskan perbedaan method addRestoranFormPage dan
+addRestoranSubmit?
+addRestoranFormPage merupakan method untuk menampilkan form menambah restoran. method tersebut me return html page
+"form-add-restoran", sedangkan addRestoranSubmit merupakan method yang akan dijalankan ketika tombol submit diklik sehingga
+method tersebut akan menambahkan data-data restoran yang telah diinput pada form sebelumnya melalui method addRestoran
+yang dimiliki oleh restoranService. Selain itu, method addRestoranSubmit akan mengembalikan html page add-restoran.html
+3. Jelaskan apa kegunaan dari JPA Repository?
+JPA Repository digunakan untuk memasukkan objek-objek Java ke dalam sebuah relational
+database. Kemudian JPA Repo juga dapat digunakan untuk mengatur database tanpa menggunakan query
+4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan
+MenuModel dibuat?
+terdapat @OneToMany dan @ManyToOne yang menunjukkan relasi model-model tersebut.
+@OneToMany yang ada di RestoranModel menunjukkan bahwa satu restoran dapat memiliki banyak menu, dan
+@ManyToOne yang ada di MenuModel menunjukkan bahwa banyak menu dapat dimiliki satu restoran.
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+FetchType.LAZY digunakan saat kita hanya ingin melakukan fetch saat kita membutuhkan datanya. Biasanya, FetchType
+ini digunakan untuk relasi one-to-many atau many-to-many.
+
+Sebaliknya, FetchType.EAGER digunakan saat kita ingin
+data yang akan di-*fetch* sudah ada saat kita membutuhkannya, jadi ia melakukan fetch seawal mungkin. Biasanya,
+FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
+
+CascadeType.ALL digunakan agar segala perubahan yang terjadi pada suatu entitas akan terjadi juga pada entitas
+yang memiliki relasi ini dengannya. Perubahan dapat terjadi karena DELETE, UPDATE, dan sebagainya. Sebagai contoh,
+ketika kita menghapus suatu restoran, maka semua menu yang terkait dengan restoran tersebut juga dapat dihapus.
+#### LATIHAN

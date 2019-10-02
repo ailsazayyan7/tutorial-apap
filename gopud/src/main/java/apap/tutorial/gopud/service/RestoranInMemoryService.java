@@ -23,23 +23,25 @@ public class RestoranInMemoryService implements RestoranService {
 	public List<RestoranModel> getRestoranList(){
 		return listRestoran;
 	}
-	
+
 	@Override
-	public RestoranModel getRestoranByIdRestoran(String idRestoran) {
+	public Optional<RestoranModel> getRestoranByIdRestoran(Long idRestoran) {
 		RestoranModel model = null;
 		for (RestoranModel i : listRestoran){
 			if (i.getIdRestoran().equals(idRestoran)) {
 				model = i;
 			}
 		}
-		return model;
+		//ini gatau harusnya diapain buat nge handle errornya
+		return Optional.ofNullable(model);
 	}
 
 	@Override
-	public void deleteRestoran(RestoranModel restoran){
-		listRestoran.remove(restoran);
-		boolean status = true;
+	public RestoranModel changeRestoran(RestoranModel restoranModel){
+		return null;
 	}
 
-	
+	@Override
+	public void deleteRestoran(RestoranModel restoran) { return; }
+
 }
