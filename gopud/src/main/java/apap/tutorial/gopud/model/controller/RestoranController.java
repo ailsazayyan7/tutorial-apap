@@ -43,25 +43,23 @@ public class RestoranController{
 		model.addAttribute("namaResto", restoran.getNama());
 		return "add-restoran";
 	}
-	
+
 	//URL mapping view
-	@RequestMapping("/restoran/view")
+	@RequestMapping(path = "/restoran/view", method = RequestMethod.GET)
 	public String view(
 			// Request Parameter untuk dipass
 			@RequestParam(value = "idRestoran") Long idRestoran, Model model
 			) {
-		
+
 		//Mengambil objek RestoranModel yang dituju
 		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
-		
+
+		List<MenuModel> menuList = menuService.getListMenuOrderByHargaAsc(restoran.getIdRestoran());
+		restoran.setListMenu(menuList);
+
 		//Add model restoran ke "resto" untuk dirender
 		model.addAttribute("resto", restoran);
 
-		List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(restoran.getIdRestoran());
-		model.addAttribute("menuList", menuList);
-
-		System.out.println("ini yang atassssssssss");
-		
 		// return view template
 		return "view-restoran";
 	}
@@ -98,7 +96,7 @@ public class RestoranController{
         // Return view template
         return "viewall-restoran";
     }
-    
+
     // URL mapping id-restoran
     @RequestMapping("/restoran/view/id-restoran/{idRestoran}")
     public String viewId(@PathVariable("idRestoran") Long idRestoran, Model model){
@@ -107,7 +105,6 @@ public class RestoranController{
 
         // Add model restoran ke "resto" untuk dirender
         model.addAttribute("resto", restoran);
-        System.out.println("ini yang bawahhhhhhhhhhhhh");
         // Return view template
         return "view-restoran";
     }

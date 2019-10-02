@@ -38,7 +38,23 @@ public class RestoranModel implements Serializable, Comparable<RestoranModel> {
 	@OneToMany(mappedBy = "restoran", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<MenuModel> listMenu;
 
-/*	public RestoranModel(Long idRestoran, String nama, String alamat, Integer nomorTelepon) {
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
+	public List<MenuModel> getListMenu() {
+		return listMenu;
+	}
+
+	public void setListMenu(List<MenuModel> listMenu) {
+		this.listMenu = listMenu;
+	}
+
+	/*	public RestoranModel(Long idRestoran, String nama, String alamat, Integer nomorTelepon) {
 		super();
 		this.idRestoran = idRestoran;
 		this.nama = nama;
