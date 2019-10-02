@@ -99,7 +99,7 @@ buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
 
 
 ## Tutorial 3
-### gopus
+### gopud
 #### PERTANYAAN
 1. Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari
 method tersebut?
@@ -130,4 +130,16 @@ FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
 CascadeType.ALL digunakan agar segala perubahan yang terjadi pada suatu entitas akan terjadi juga pada entitas
 yang memiliki relasi ini dengannya. Perubahan dapat terjadi karena DELETE, UPDATE, dan sebagainya. Sebagai contoh,
 ketika kita menghapus suatu restoran, maka semua menu yang terkait dengan restoran tersebut juga dapat dihapus.
-#### LATIHAN
+
+## Tutorial 4
+###PERTANYAAN
+1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana
+anda menyelesaikan latihan nomor 2
+- Pada latihan nomor 2, saya diharuskan untuk mengubah title pada navbar yang aktif. Pertama saya menambahkan variable di fragment.html. variable tersebut saya beri nama pageTitle. Variable tersebut akan berubah tergantung dengan pageTitle yang dimiliki oleh setiap halaman html yang ada di gopud.
+Misalkan pada halaman home, saya memberikan nilai variabel pageTitle dengan nama "Home". Nantinya variabel pageTitle yang dituliskan pada fragment.html akan digantikan dengan tulisan 'Home'
+2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda
+menyelesaikan latihan nomor 2
+-
+3. Jelaskan perbedaan th:include dan th:replace
+- 
+4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
