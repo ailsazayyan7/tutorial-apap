@@ -141,5 +141,10 @@ Misalkan pada halaman home, saya memberikan nilai variabel pageTitle dengan nama
 menyelesaikan latihan nomor 2
 -
 3. Jelaskan perbedaan th:include dan th:replace
-- 
+- jika kita menggunakan th:include, fragment akan diletakkan didalam tag yg mengantung th:include tersebut.
+Sedangkan apabila menggunakan th:replace, seluruh isi tag akan digantikan dengan fragment. 
 4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+th:object berfungsi untuk menjadikan atributnya sebagai object dari operasi-operasi dibawahnya.
+Misalkan kita menuliskan th:object="${restoran}", maka restoran dapat digunakan sebagai object pada operasi selanjutnya hanya dengan menuliskan tanda bintang.
+<p>< span th :text="* {nama}" >kaefci< /span></p>
+<p>< span th :text=" $ {restoran.nama}"> mekdi< /span>.</p>
