@@ -90,6 +90,7 @@ public class MenuModel implements Serializable {
         this.restoran = restoran;
     }
 
+
 }
 
 
