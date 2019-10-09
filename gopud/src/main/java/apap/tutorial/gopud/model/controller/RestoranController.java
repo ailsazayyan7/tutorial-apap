@@ -1,119 +1,147 @@
 package apap.tutorial.gopud.model.controller;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
+import apap.tutorial.gopud.model.MenuModel;
+import apap.tutorial.gopud.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.service.RestoranService;
 
 @Controller
 public class RestoranController{
+	@Qualifier("restoranServiceImpl")
 	@Autowired
 	private RestoranService restoranService;
-	// URL mapping add
-	@RequestMapping("/restoran/add")
-	public String add(
-			//Request Parameter untuk dipass
-			@RequestParam(value = "idRestoran", required = true) String idRestoran,
-			@RequestParam(value = "nama", required = true) String nama,
-			@RequestParam(value = "alamat", required = true) String alamat,
-			@RequestParam(value = "nomorTelepon", required = true) Integer nomorTelepon,
-			Model model
-			) {
-		// Membuat objek RestoranModel
-		RestoranModel restoran = new RestoranModel(idRestoran, nama, alamat, nomorTelepon);
-		
-		//Memanggil service addRestoran
+
+	@Autowired
+	private MenuService menuService;
+
+	@RequestMapping("/")
+	public String home() { return "home";}
+
+	//URL mapping yang digunakan untuk mengakses halaman add restoran
+	@RequestMapping(value = "/restoran/add", method = RequestMethod.GET)
+	public String addRestoranFormPage(Model model){
+		RestoranModel newRestoran = new RestoranModel();
+		model.addAttribute("restoran", newRestoran);
+		return "form-add-restoran";
+
+	}
+
+	//URL mapping yang digunakan untuk submit form yang telah Anda masukkan pada halaman add restoran
+	@RequestMapping(value = "/restoran/add", method = RequestMethod.POST)
+	public String addRestoranSubmit(@ModelAttribute RestoranModel restoran, Model model){
 		restoranService.addRestoran(restoran);
-		
-		//Add variabel nama restoran ke "namaResto" untuk dirender
-		model.addAttribute("namaResto", nama);
-		
-		//Return view template
+		model.addAttribute("namaResto", restoran.getNama());
 		return "add-restoran";
 	}
-	
+
 	//URL mapping view
-	@RequestMapping("/restoran/view")
+	@RequestMapping(path = "/restoran/view", method = RequestMethod.GET)
 	public String view(
 			// Request Parameter untuk dipass
-			@RequestParam(value = "idRestoran") String idRestoran, Model model
-			) {
-		
+			@RequestParam(value = "idRestoran") Long idRestoran, Model model
+
+	) {
+
 		//Mengambil objek RestoranModel yang dituju
-		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
-		
+		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+
+		List<MenuModel> menuList = menuService.getListMenuOrderByHargaAsc(restoran.getIdRestoran());
+		restoran.setListMenu(menuList);
+
 		//Add model restoran ke "resto" untuk dirender
 		model.addAttribute("resto", restoran);
-		
+
 		// return view template
 		return "view-restoran";
 	}
-	
-    // URL mapping viewAll
-    @RequestMapping("restoran/viewall")
-    public String viewall(Model model){
 
-        //Mengambil semua objek RestoranModel yang ada
-        List<RestoranModel> listRestoran = restoranService.getRestoranList();
+	//API yang digunakan untuk menuju halaman form change restoran
+	@RequestMapping(value="restoran/change/{idRestoran}", method = RequestMethod.GET)
+	public String changeRestoranFormPage(@PathVariable Long idRestoran, Model model){
+		//Mengambil existing data restoran
+		RestoranModel existingRestoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+		model.addAttribute("restoran", existingRestoran);
+		return "form-change-restoran";
+	}
 
-        // Add model restoran ke "resto" untuk di render
-        model.addAttribute("restoList", listRestoran);
+	//API yang digunakan untuk submit form change restoran
+	@RequestMapping(value = "restoran/change/{idRestoran}", method = RequestMethod.POST)
+	public String changeRestoranFormSubmit(@PathVariable Long idRestoran, @ModelAttribute RestoranModel restoran, Model model){
+		RestoranModel newRestoranData = restoranService.changeRestoran(restoran);
+		model.addAttribute("restoran", newRestoranData);
 
-        // Return view template
-        return "viewall-restoran";
-    }
-    
-    // URL mapping id-restoran
-    @RequestMapping("/restoran/view/id-restoran/{idRestoran}")
-    public String viewId(@PathVariable("idRestoran") String idRestoran, Model model){
-    	// Mengambil objek RestoranModel yang dituju
-        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
+		return "change-restoran";
+	}
 
-        // Add model restoran ke "resto" untuk dirender
-        model.addAttribute("resto", restoran);
+	// URL mapping viewAll
+	@RequestMapping("restoran/viewall")
+	public String viewall(Model model){
 
-        // Return view template
-        return "view-restoran";
-    }
+		//Mengambil semua objek RestoranModel yang ada
+		List<RestoranModel> listRestoran = restoranService.getRestoranList();
 
-    //URL mapping update nomor telepon
-    @RequestMapping("restoran/update/id-restoran/{idRestoran}/nomor-telepon/{nomorTelepon}")
-    public String update(@PathVariable("nomorTelepon") Integer nomorTelepon, @PathVariable("idRestoran") String idRestoran, Model model){
-        // Mengambil objek RestoranModel yang dituju
-        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
-        restoran.setNomorTelepon(nomorTelepon);
+		Collections.sort(listRestoran);
+		// Add model restoran ke "resto" untuk di render
+		model.addAttribute("restoList", listRestoran);
 
-        // Add model restoran ke "resto" untuk dirender
-        model.addAttribute("resto", restoran);
+		// Return view template
+		return "viewall-restoran";
+	}
 
-        // Return view template
-        return "update-telepon";
-    }
-
-    // URL mapping delete resto
-	@RequestMapping("restoran/delete/id/{idRestoran}")
-	public String delete(@PathVariable("idRestoran") String idRestoran, Model model){
+	// URL mapping id-restoran
+	@RequestMapping("/restoran/view/id-restoran/{idRestoran}")
+	public String viewId(@PathVariable("idRestoran") Long idRestoran, Model model){
 		// Mengambil objek RestoranModel yang dituju
-		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran);
-		if (idRestoran.equals(null) || idRestoran.equals("")){
-			return "error";}
-		else{
+		Optional<RestoranModel> restoran = restoranService.getRestoranByIdRestoran(idRestoran);
 
-			// Add model restoran ke "resto" untuk dirender
+		// Add model restoran ke "resto" untuk dirender
+		model.addAttribute("resto", restoran);
+		// Return view template
+		return "view-restoran";
+	}
+
+	//URL mapping update nomor telepon
+	@RequestMapping("restoran/update/id-restoran/{idRestoran}/nomor-telepon/{nomorTelepon}")
+	public String update(@PathVariable("nomorTelepon") Integer nomorTelepon, @PathVariable("idRestoran") Long idRestoran, Model model) {
+		// Mengambil objek RestoranModel yang dituju
+		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+		restoran.setNomorTelepon(nomorTelepon);
+
+		// Add model restoran ke "resto" untuk dirender
+		model.addAttribute("resto", restoran);
+
+		// Return view template
+		return "update-telepon";
+	}
+
+	@RequestMapping(value = "restoran/delete/{idRestoran}")
+	public String viewDeleteRestoran(
+			@PathVariable(value = "idRestoran") Long idRestoran,
+			Model model
+	) {
+		RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+		List<MenuModel> listMenu = menuService.findAllMenuByIdRestoran(idRestoran);
+		if (listMenu.size() == 0) {
 			model.addAttribute("resto", restoran);
-
 			restoranService.deleteRestoran(restoran);
-
-			// Return view template
 			return "delete";
+		} else {
+			model.addAttribute("resto", restoran);
+			return "delete-restoran-error";
+
 		}
 
+
 	}
-    
 }
+

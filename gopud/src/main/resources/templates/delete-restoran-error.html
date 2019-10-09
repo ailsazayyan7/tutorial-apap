@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-    <title>Delete Restoran</title>
+    <title>Error</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar(pageTitle='Error')"></nav>
 
-<nav th:replace="fragments/fragment :: navbar(pageTitle='DeleteRestoran')"></nav>
-
-<h2 th:text="'Restoran + ${restoran.nama}' berhasil dihapus.'"></h2>
+<h2 th:text="'Restoran ' + ${restoran.nama} + ' memiliki menu'"></h2>
+<h2 th:text="Hapus menu untuk menghapus restoran!"></h2>
 </body>
 </html>
