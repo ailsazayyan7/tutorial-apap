@@ -19,7 +19,4 @@ public interface MenuService {
 
     List<MenuModel> getListMenuOrderByHargaAsc(Long idRestoran);
 
-
-
-
 }

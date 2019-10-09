@@ -89,8 +89,6 @@ public class MenuModel implements Serializable {
     public void setRestoran(RestoranModel restoran) {
         this.restoran = restoran;
     }
-
-
 }
 
 

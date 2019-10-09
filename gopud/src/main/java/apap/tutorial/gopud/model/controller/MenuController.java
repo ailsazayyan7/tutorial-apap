@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.*;
 
 import apap.tutorial.gopud.model.MenuModel;
@@ -30,12 +31,14 @@ public class MenuController {
 /*    ini sebelum pake cara fitri
 @RequestMapping(value = "/menu/add/{idRestoran}", method = RequestMethod.GET)
     private String addMenuFormPage(@PathVariable(value = "idRestoran") Long idRestoran, Model model){
+
         MenuModel menu = new MenuModel();
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
         menu.setRestoran(restoran);
 
         model.addAttribute("menu", menu);
         return "form-add-menu";
+
     }*/
 
     @RequestMapping(value = "/menu/add/{idRestoran}")
@@ -79,6 +82,7 @@ public class MenuController {
         model.addAttribute("restoran" , restoran);
         return "form-add-menu";
     }
+
     //API yang digunakan untuk menuju halaman form change menu
     @RequestMapping(value="menu/change/{id}", method = RequestMethod.GET)
     public String changeMenuFormPage(@PathVariable Long id, Model model){
@@ -97,7 +101,9 @@ public class MenuController {
         return "change-menu";
     }
 
+
     /*@RequestMapping(value = "menu/delete/{id}")
+
     public String deleteMenu(@PathVariable Long id, Model model) {
         MenuModel menu = menuService.getMenuByIdMenu(id).get();
         model.addAttribute("menu", menu);
@@ -110,6 +116,7 @@ public class MenuController {
             menuService.deleteMenu(menu);
         }
         return "delete-menu";
+
     }
 
 }

@@ -100,6 +100,7 @@ buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
 
 ## Tutorial 3
 ### gopud
+
 #### PERTANYAAN
 1. Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari
 method tersebut?
@@ -131,6 +132,7 @@ CascadeType.ALL digunakan agar segala perubahan yang terjadi pada suatu entitas 
 yang memiliki relasi ini dengannya. Perubahan dapat terjadi karena DELETE, UPDATE, dan sebagainya. Sebagai contoh,
 ketika kita menghapus suatu restoran, maka semua menu yang terkait dengan restoran tersebut juga dapat dihapus.
 
+
 ## Tutorial 4
 ###PERTANYAAN
 1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana
@@ -148,3 +150,6 @@ th:object berfungsi untuk menjadikan atributnya sebagai object dari operasi-oper
 Misalkan kita menuliskan th:object="${restoran}", maka restoran dapat digunakan sebagai object pada operasi selanjutnya hanya dengan menuliskan tanda bintang.
 <p>< span th :text="* {nama}" >kaefci< /span></p>
 <p>< span th :text=" $ {restoran.nama}"> mekdi< /span>.</p>
+
+#### LATIHAN
+

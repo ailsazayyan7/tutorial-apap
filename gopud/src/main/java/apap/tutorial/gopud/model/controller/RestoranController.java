@@ -49,6 +49,7 @@ public class RestoranController{
 	public String view(
 			// Request Parameter untuk dipass
 			@RequestParam(value = "idRestoran") Long idRestoran, Model model
+
 	) {
 
 		//Mengambil objek RestoranModel yang dituju
@@ -81,6 +82,7 @@ public class RestoranController{
 
 		return "change-restoran";
 	}
+
 	// URL mapping viewAll
 	@RequestMapping("restoran/viewall")
 	public String viewall(Model model){
@@ -142,3 +144,4 @@ public class RestoranController{
 
 	}
 }
+

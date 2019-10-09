@@ -51,5 +51,4 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuModel> getListMenuOrderByHargaAsc(Long idRestoran) {
         return menuDB.findByRestoranIdRestoranOrderByHarga(idRestoran);
     }
-
 }

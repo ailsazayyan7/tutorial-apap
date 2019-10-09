@@ -54,7 +54,9 @@ public class RestoranModel implements Serializable, Comparable<RestoranModel> {
 		this.listMenu = listMenu;
 	}
 
-	/*	public RestoranModel(Long idRestoran, String nama, String alamat, Integer nomorTelepon) {
+
+/*	public RestoranModel(Long idRestoran, String nama, String alamat, Integer nomorTelepon) {
+
 		super();
 		this.idRestoran = idRestoran;
 		this.nama = nama;
