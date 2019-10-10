@@ -178,12 +178,12 @@ mengexclude main class, coverage akan lebih dapat terlihat secara detail.
 ##Screen Capture Coverage
 ###MenuServiceTest
 ######Before
-![before](/menuService_before.jpg)
+![before](src/main/resource/static/menuService_before.jpg)
 ######After
-![after](/menuService_after.jpg)
+![after](src/main/resource/static/menuService_after.jpg)
 
 ###RestoranControllerTest
-![before](/restoranController_before.jpg)
+![before](src/main/resource/static/restoranController_before.jpg)
 ######After
-![after](/restoranController_after.jpg)
+![after](src/main/resource/static/restoranController_after.jpg)
 
