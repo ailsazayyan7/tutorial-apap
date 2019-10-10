@@ -116,4 +116,6 @@ public class RestoranControllerTest {
                 .andExpect(model().attribute("resto", hasProperty("alamat" ,is("alamat 1"))));
         verify(restoranService, times(1)).getRestoranByIdRestoran(1L);
     }
+
+
 }

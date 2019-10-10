@@ -98,4 +98,16 @@ public class MenuServiceImplTest {
         menuService.deleteMenu(menu);
         verify(menuDb, times(1)).delete(menu);
     }
+
+    @Test
+    public void whenMenuOrderByHargaAscCalledItShouldReturnAllMenuOrderByHargaAsc() {
+        List<MenuModel> allMenuInRestoran = new ArrayList<>();
+        for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
+            allMenuInRestoran.add(new MenuModel());
+        }
+        when (menuService.getListMenuOrderByHargaAsc(1L)).thenReturn(allMenuInRestoran);
+        List<MenuModel> dataFromServiceCall = menuService.getListMenuOrderByHargaAsc(1L);
+        assertEquals(3, dataFromServiceCall.size());
+        verify(menuDb, times(1)).findByRestoranIdRestoranOrderByHarga(1L);
+    }
 }
