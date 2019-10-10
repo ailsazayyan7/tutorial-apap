@@ -173,3 +173,17 @@ perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclu
 perhitungan code coverage.**
 <br>Karena main class pada project gopud ini hanya bersifat konfigurasi dari project, tidak perlu disertakan pada test coverage. Jika tetap disertakan, perhitungan coverage akan tetap mengitung code main class tersebut. Dengan
 mengexclude main class, coverage akan lebih dapat terlihat secara detail.
+
+
+##Screen Capture Coverage
+###MenuServiceTest
+######Before
+![before](/menuService_before.jpg)
+######After
+![after](/menuService_after.jpg)
+
+###RestoranControllerTest
+![before](/restoranController_before.jpg)
+######After
+![after](/restoranController_after.jpg)
+
