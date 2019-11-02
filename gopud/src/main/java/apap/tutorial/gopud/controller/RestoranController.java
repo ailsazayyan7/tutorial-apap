@@ -65,6 +65,18 @@ public class RestoranController{
 		return "view-restoran";
 	}
 
+/*	// URL mapping id-restoran
+	@RequestMapping("/restoran/view/id-restoran/{idRestoran}")
+	public String viewId(@PathVariable("idRestoran") Long idRestoran, Model model){
+		// Mengambil objek RestoranModel yang dituju
+		Optional<RestoranModel> restoran = restoranService.getRestoranByIdRestoran(idRestoran);
+
+		// Add model restoran ke "resto" untuk dirender
+		model.addAttribute("resto", restoran);
+		// Return view template
+		return "view-restoran";
+	}*/
+
 	//API yang digunakan untuk menuju halaman form change restoran
 	@RequestMapping(value="restoran/change/{idRestoran}", method = RequestMethod.GET)
 	public String changeRestoranFormPage(@PathVariable Long idRestoran, Model model){
