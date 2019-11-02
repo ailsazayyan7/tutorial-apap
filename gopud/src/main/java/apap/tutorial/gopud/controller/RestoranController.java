@@ -1,5 +1,4 @@
-package apap.tutorial.gopud.model.controller;
-import java.util.Collection;
+package apap.tutorial.gopud.controller;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
