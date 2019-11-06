@@ -10,10 +10,10 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar (pageTitle='Add Menu')"></nav>
 
-<h3> Tambah Produk</h3>
+<h3> Tambah Menu</h3>
 
-<form th:action="@{'/menu/add/'+${restoran.idRestoran}}" th:object="${restoran}" method="POST">
-    <input  type="hidden" th:field="*{idRestoran}">
+<form th:action="@{'/menu/add/'+${resto.idRestoran}}" th:object="${resto}" method="POST">
+    <input  type="hidden" th:field="*{idRestoran}"/>
     <table>
         <thead>
         <tr>
@@ -36,23 +36,6 @@
     </table>
     <button type="submit" name="save">submit</button>
 </form>
-<!--<form th:action="@{/menu/add}" th:object="${menu}" method="POST">
-
-    <input type="hidden" th:field="*{restoran}" />
-    Nama: <br>
-    <input type="text" name="nama"/>
-    <br>
-    Deskripsi: <br>
-    <input type="text" name="deskripsi"/>
-    <br>
-    Harga: <br>
-    <input type="number" name="harga"/>
-    <br>
-    durasiMasak (menit): <br>
-    <input type="number" name="durasiMasak"/>
-    <br>
-    <button type="submit"> Submit </button>
-</form>-->
 
 </body>
 </html>

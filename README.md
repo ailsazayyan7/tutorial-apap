@@ -1,7 +1,7 @@
 # Tutorial APAP
 
 ## Authors
-* **ailsa.zayyan** - *1706074682* - *APAP-C
+* **ailsa.zayyan** - *1706074682* - *APAP-C*
 ---
 ## Tutorial 1
 ### What I have learned today
@@ -151,5 +151,39 @@ Misalkan kita menuliskan th:object="${restoran}", maka restoran dapat digunakan 
 <p>< span th :text="* {nama}" >kaefci< /span></p>
 <p>< span th :text=" $ {restoran.nama}"> mekdi< /span>.</p>
 
-#### LATIHAN
+##Tutorial 5
+###PERTANYAAN
+1. **Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and
+then:**
+*Given* pada unit test tersebut adalah RestoranModel restoran = generateDummyRestoranModel(1); karena part dari test tersebut merupakan kondisi-kondisi awal inisiasi Test. *given* tersebut menginisiasi RestoranModel menggunakan method generateDummyRestoran.  when(restoranService.getRestoranByIdRestoran(1L)).thenReturn(Optional.of(restoran)); juga merupakan bagian dari given karena membantu proses inisiasi (apa yang harus dilakukan ketika terjadi interaksi tertentu)
+<br>bagian *When* pada unit test yang dibuat adalah bagian code wherestoranService.getRestoranByIdRestoran(1L), karena bagian itulah yang ingin kita test
+<br>Sisa dari code test tersebut merupakan bagian dari *And Then*, karena menampilkan reaksi apa yang kita harapkan. andExpect dan verify merupakan bagian dari andThen 
+
+2. **Jelaskan perbedaan line coverage dan logic coverage:**
+Line coverage menghitung persentase line yang dieksekusi oleh unit test. Logic coverage sendiri merupakan 
+jenis testing yang dilakukan untuk masing-masing bagian tertentu, contohnya kondisi if else yang ada di dalam suatu use case.
+3. **Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa
+seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin
+terjadi?**
+<br> Seharusnya, yang harus dibuat adalah unit test. Unit Test berfungsi untuk menentukan dari awal standar-standar apa yang seharusnya diterapkan oleh suatu aplikasi. Pada Unit Test, kita juga dapat mengontrol program dengan baik. Selain itu, dengan adanya unit test, proses development akan lebih cepat karena kita sudah menentukan standar-standarnya pada unit test.<br>
+Jika kita membuat code lebih dulu dibandingkan unit test, tentu proses development akan lebih lama. Selain itu, kita mungkin kesulitan untuk mencari solusi error yang muncul.
+
+4. **[Bonus] Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam
+perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari
+perhitungan code coverage.**
+<br>Karena main class pada project gopud ini hanya bersifat konfigurasi dari project, tidak perlu disertakan pada test coverage. Jika tetap disertakan, perhitungan coverage akan tetap mengitung code main class tersebut. Dengan
+mengexclude main class, coverage akan lebih dapat terlihat secara detail.
+
+
+##Screen Capture Coverage
+###MenuServiceTest
+######Before
+![before](src/main/resource/static/menuService_before.jpg)
+######After
+![after](src/main/resource/static/menuService_after.jpg)
+
+###RestoranControllerTest
+![before](src/main/resource/static/restoranController_before.jpg)
+######After
+![after](src/main/resource/static/restoranController_after.jpg)
 
