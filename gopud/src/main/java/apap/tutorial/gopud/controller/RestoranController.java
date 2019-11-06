@@ -1,5 +1,4 @@
-package apap.tutorial.gopud.model.controller;
-import java.util.Collection;
+package apap.tutorial.gopud.controller;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -23,9 +22,6 @@ public class RestoranController{
 
 	@Autowired
 	private MenuService menuService;
-
-	@RequestMapping("/")
-	public String home() { return "home";}
 
 	//URL mapping yang digunakan untuk mengakses halaman add restoran
 	@RequestMapping(value = "/restoran/add", method = RequestMethod.GET)
