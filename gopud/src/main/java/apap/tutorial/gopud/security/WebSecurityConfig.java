@@ -21,8 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT")
+                .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT", "ADMIN")
                 .antMatchers("/user/addUser").hasAnyAuthority("ADMIN")
+                .antMatchers("/menu/**").hasAnyAuthority("MERCHANT")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -35,12 +36,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Autowired
+/*    @Autowired
     public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
                 .passwordEncoder(encoder())
                 .withUser("nadiem").password(encoder().encode("makarim"))
-                .roles("USER");
+                .roles("ADMIN");
 
     }*/
     @Qualifier("userDetailsServiceImpl")
