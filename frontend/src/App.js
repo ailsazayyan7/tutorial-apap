@@ -18,24 +18,34 @@ export default class App extends React.Component {
   // for class based component, you need to provide render
   // function
   render() {
+    const { favItems } = this.state;
     return (
-      <div className="container-fluid">
-      <h1 className="text-center">
-        Welcome!
-        <small>Class-based</small>
-      </h1>
-      <div className="container pt-3">
-        <div className="row">
-          <div className="col-sm">
-          <List
-          title="Our Menu"
-          items={dummyItems}
-          onItemClick={() => {}}
-          />
-          </div>
-        </div>
-      </div>
-      </div>
-);
+    <div className="container-fluid">
+    <h1 className="text-center">
+    Welcome!
+    <small>Class-based</small>
+    </h1>
+    <div className="container pt-3">
+    Disusun oleh
+    WPR
+    <div className="row">
+    <div className="col-sm">
+    <List
+    title="Our Menu"
+    items={dummyItems}
+    onItemClick={this.handleItemClick}
+    />
+    </div>
+    <div className="col-sm">
+    <List
+    title="My Favorite"
+    items={favItems}
+    onItemClick={this.handleItemClick}
+    />
+    </div>
+    </div>
+    </div>
+    </div>
+    );
 }
 }
