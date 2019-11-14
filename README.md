@@ -210,3 +210,22 @@ mengexclude main class, coverage akan lebih dapat terlihat secara detail.
    - UserDetailsServiceImpl.java berguna untuk membangun autentikasi user. didalam class ini dilakukan extends terhadap UserServiceDetail dari spring security.
      Class ini akan menghasilkan UserDetail object yang akan memberikan informasi terkait user yang terdapat dari db dan juga memberikan otorisasi
      yang dimiliki user sesuai dengan role yang dimiliki. Sedangkan UserServiceImpl digunakan untuk mengatur mapping yang dilakukan oleh user
+     
+
+## Tutorial 8
+1. Untuk latihan nomor 1 dan 2, saya menambah kan beberapa baris dan menghilangkan beberapa baris kodingan.<br>
+    - ganti baris input di Item.js menjadi :
+    <img src="1.jpg"/>
+    <br> baris tersebut berfungsi untuk 
+    - menghapus baris ini di App.js : <br>
+else newItems.splice(targetInd, 1);<br><br>
+Kodingan tersebut berfungsi untuk menghapus checklist box serta menambahkan fitur hapus pada bagian my favorite apabila serta hapus makanan dari myfav dengan cara mengklik makanan pada bagian kolom kiri apabila sudah ada di myfavorite
+
+2. Kemudian untuk menambahkan toggle pada bagian my favorite, tambahkan input checklist di App.js. <br>
+<img src="2.jpg"/>
+Kemudian, kita membuat fungsi handleToggle untuk mengatur tampilan favList yang ada
+<br><br>
+3. Pada file EmptyState.js, kita membuat tampilan jika ternyata favList masih kosong. Kemudian, di App.js buat fungsi untuk menampilkan tulisan-tulisan yang ada di Empty State. 
+<img src="3.jpg"/>
+Nantinya fungsi tersebut akan digunakan pada bagian berikut:
+<img src="4.jpg"/>
