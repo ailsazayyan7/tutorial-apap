@@ -13,7 +13,7 @@ export default function Item(props){
             onClick={handleChange}
         >
             <div className="d-flex w-100 justify-content-between align-items-center">
-                <input type="checkbox" checked = {checked} onChange={handleChange}/>
+                {checked?<input type="checkbox" checked={checked} onChange={handleChange}/>:null}
                 <h5 className="mb-1">{nama}</h5>
                 <small>Rp{harga}</small>
             </div>
