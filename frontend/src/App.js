@@ -1,6 +1,7 @@
 import React from "react"; 
 import List from "./components/List"; 
 import dummyItems from "./items.json"; 
+import EmptyState from "./components/EmptyState";
 
 export default class App extends React.Component { 
   // for class based component, you need to provide render 
@@ -59,13 +60,14 @@ export default class App extends React.Component {
               onItemClick = {this.handleItemClick}
               />
             </div>
-            { !this.state.show ?
+            {!this.state.show ?
               <div className="col-sm">
+                {!this.state.favItems.length ? <EmptyState/> :
                 <List
-                title = "My Favorite Menu"
+                title = "My Favorite"
                 items = {favItems} 
                 onItemClick = {this.handleRemoveFavorite}
-                />
+                />}
               </div> 
             : null}
           </div>
