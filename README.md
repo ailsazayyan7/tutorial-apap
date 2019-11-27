@@ -187,3 +187,45 @@ mengexclude main class, coverage akan lebih dapat terlihat secara detail.
 ######After
 ![after](src/main/resource/static/restoranController_after.jpg)
 
+##Tutorial 7
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+   yang telah anda buat) konsep tersebut diimplementasi?
+   - Authentication : Memastikan bahwa pengguna merupakan user yang sesuai. implementasinya terdapat pada form login dimana kita memastikan apakah pengguna memasukan username serta password yang tepat atau tidak
+   - Authorization : Menentukan apakah user memiliki akses terhadap suatu fitur atau tidak. implementasi kode terdapat pada method configure yang berada di WebSecurityConfig
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerjanya!
+  -BCryptPasswordEncoder adalah salah satu tool yang digunakan untuk melakukan encode terhadap
+   password yang ada di Spring. Jadi untuk kepentingan Security,
+   suatu password tidak boleh disimpan dalam bentuk plain. Sehingga
+   perlu di encode dengan memanfaatkan hashing. 
+   Cara penggunaannya adalah dengan membuat objek BCryptPasswordEncoder, lalu objek
+   tersebut dipanggil dan menggunakan method encode untuk
+   melakukan encode terhadap password tersebut 
+3. Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java?
+    - UUID adalah kumpulan 32 karakter (String) yang dibuat secara random dengan teknik khusus yang dijamin unik untuk setiap data. Dalam waktu 1 detik pun, jika di-generate 1000 UUID, 
+    kecil kemungkinan ada UUID yang sama. Sehingga lebih cocok untuk digunakan sebagai Primary Key. Sehingga pada UserModel.java memakai UUID untuk keunikan antar user dan juga keamanan.
+    UUID tersebut tentu saja sulit ditebak oleh pengguna karena tidak mempunyai pola khusus. Jika ada hacker yang ingin menggunakan program looping untuk mendapatkan seluruh data User, maka dia perlu membuat banyak kombinasi 32 karakter tersebut, tentu tidak mudah dan membutuhkan waktu lama.
+
+4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+   padahal kita sudah memiliki class UserRoleServiceImpl.java?
+   - UserDetailsServiceImpl.java berguna untuk membangun autentikasi user. didalam class ini dilakukan extends terhadap UserServiceDetail dari spring security.
+     Class ini akan menghasilkan UserDetail object yang akan memberikan informasi terkait user yang terdapat dari db dan juga memberikan otorisasi
+     yang dimiliki user sesuai dengan role yang dimiliki. Sedangkan UserServiceImpl digunakan untuk mengatur mapping yang dilakukan oleh user
+     
+
+## Tutorial 8
+1. Untuk latihan nomor 1 dan 2, saya menambah kan beberapa baris dan menghilangkan beberapa baris kodingan.<br>
+    - ganti baris input di Item.js menjadi :
+    <img src="1.jpg"/>
+    <br> baris tersebut berfungsi untuk 
+    - menghapus baris ini di App.js : <br>
+else newItems.splice(targetInd, 1);<br><br>
+Kodingan tersebut berfungsi untuk menghapus checklist box serta menambahkan fitur hapus pada bagian my favorite apabila serta hapus makanan dari myfav dengan cara mengklik makanan pada bagian kolom kiri apabila sudah ada di myfavorite
+
+2. Kemudian untuk menambahkan toggle pada bagian my favorite, tambahkan input checklist di App.js. <br>
+<img src="2.jpg"/>
+Kemudian, kita membuat fungsi handleToggle untuk mengatur tampilan favList yang ada
+<br><br>
+3. Pada file EmptyState.js, kita membuat tampilan jika ternyata favList masih kosong. Kemudian, di App.js buat fungsi untuk menampilkan tulisan-tulisan yang ada di Empty State. 
+<img src="3.jpg"/>
+Nantinya fungsi tersebut akan digunakan pada bagian berikut:
+<img src="4.jpg"/>

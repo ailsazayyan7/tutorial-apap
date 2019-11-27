@@ -49,6 +49,7 @@ INI YG TUTORIAL-4
 
     }
 
+
     @RequestMapping(value = "/menu/add/{restoranId}", params={"save"}, method = RequestMethod.POST)
     private String addMenuSubmit(@ModelAttribute RestoranModel restoran, Model model){
         RestoranModel curr = restoranService.getRestoranByIdRestoran(restoran.getIdRestoran()).get();
@@ -57,6 +58,7 @@ INI YG TUTORIAL-4
             menus.get(i).setRestoran(curr);
             menuService.addMenu(menus.get(i));
         }
+
         return "add-menu";
     }
 
