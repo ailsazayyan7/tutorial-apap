@@ -1,10 +1,8 @@
 package apap.tutorial.gopud.controller;
 import apap.tutorial.gopud.model.RestoranModel;
-import apap.tutorial.gopud.model.controller.RestoranController;
 import apap.tutorial.gopud.service.MenuService;
 import apap.tutorial.gopud.service.RestoranService;
 import org.hamcrest.Matchers;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
