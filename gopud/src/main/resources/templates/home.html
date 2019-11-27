@@ -26,7 +26,9 @@
                             <input type="text" name="username" class="form-control"/>
 
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control"/>
+                            <input type="password" name="newPass"
+                                   pattern="^(?=.*[A-Za-z])[A-Za-z\d]{10,}$"
+                                   title="Must contain at least 10 or more characters" required>
 
                             <label>Role</label>
                             <select name="role" class="form-control">
