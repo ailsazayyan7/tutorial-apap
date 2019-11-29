@@ -94,7 +94,7 @@ buat method baru lagi di RestoranController dan buat 2 kondisi, id ditemukan ata
 jika ditemukan, lakukan fungsi delete yang telah dibuat di RestoranService.
 
 buat 2 file html, 1 untuk halaman berhasil, dan 1nya untuk halaman error
-=======
+
 [berikut](https://help.github.com/en/articles/basic-writing-and-formatting-syntax))
 
 
@@ -229,3 +229,40 @@ Kemudian, kita membuat fungsi handleToggle untuk mengatur tampilan favList yang 
 <img src="3.jpg"/>
 Nantinya fungsi tersebut akan digunakan pada bagian berikut:
 <img src="4.jpg"/>
+
+## Tutorial 9
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut? 
+- Langkah yang dilakukan untuk menyelesaikan LATIHAN no.1 adalah dengan memodifikasi Stores.js yaitu dengan menambahkan beberapa line code pada method async addStore() yaitu dengan membuat state dari nama, keterangan dan followers menjadi "" yang sebelumnya diisi pada bagian form ketika menambahkan store. Lalu pada bagian form, ditambahkan atribut value dengan menyimpan state dari nama, keterangan dan followers. Hal tersebut dilakukan karena ketika menampilkan form value yang ditampilkan pada form tersebut berdasarkan state saat ini untuk nama, keterangan dan followers. Sehingga agar isinya menjadi kosong ketika telah usai add store. Maka perlu direset state tersebut dengan menjadikan value dari state tersebut menjadi ""
+
+2. Jelaskan fungsi dari async dan await! 
+- Fungsi dari async adalah untuk menjalankan suatu fungsi bersamaan dengan javascript (dapat dilakukan secara bersamaan dengan tahapan lain). Sedangkan untuk await biasanya terdapat di dalam fungsi async, await berarti codingan akan berhenti dari fungsi async terlebih dahulu sampai task selesai dilakukan.
+
+sumber : https://blog.expo.io/react-native-meets-async-functions-3e6f81111173
+
+3. : Masukkan jawaban dari TODO pada Component Lifecycle pada pertanyaan ini. 
+Langkah 1
+![1](https://user-images.githubusercontent.com/55173995/69877111-d77f0480-12f3-11ea-9ea0-e385c668c1f9.jpg)
+
+<br>
+Langkah 2
+![2](https://user-images.githubusercontent.com/55173995/69877107-d6e66e00-12f3-11ea-8c6b-b287dd1bbf0f.jpg)
+<br>
+Langkah 3
+![3](https://user-images.githubusercontent.com/55173995/69877108-d6e66e00-12f3-11ea-9a9f-426b44618817.jpg)
+<br>
+Langkah 4
+![4](https://user-images.githubusercontent.com/55173995/69877110-d6e66e00-12f3-11ea-9e7e-5f555f117bb3.jpg)
+
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount. Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.
+
+    componentDidMount : Fungsi ini akan dijalankan setelah fungsi render() selesai dilakukan dan komponen telah dipasang (mounted) ke DOM ketika kita dapat melihat komponen UI yang telah dirender. Use case yang biasanya menggunakan ini adalah ketika membuat fetch() ke server atau setState() dari suatu state yang nantinya akan melakukan render dari data yang terbaru. Ketika melakukan update state pada fungsi ini akan memanggil fungsi render() kembali.
+
+    shouldComponentUpdate : Fungsi ini digunakan untuk menentukan untuk memperbolehkan diupdate atau tidak suatu state berdasarkan state yang akan diubah. Dengan menerapkan ini, nantinya dapat return boolean. Namun saat ini bisa menerapkan React.PureComponent. Biasanya digunakan untuk performance optimisation measures. Use case yang menggunakan ini adalah untuk mengecek state saat ini dengan yang akan diubahnya.
+
+    componentDidUpdate : Fungsi ini digunakan dipanggil ketika state baru saja diubah. Fungsi ini dapat digunakan untuk mengoperasikan DOM ketika komponen sudah di-update. Use case yang dapat menggunakan ini adalah ketika melakukan network request.
+    
+    componentWillReceiveProps : Fungsi ini dijalankan sebelum mounted component menerima props yang baru. Biasanya fungsi ini digunakan apabila ingin melakukan setState terhadap perubahan props. Fungsi ini dipanggil ketika terjadi update pada props saja. Biasanya use case yang menggunakan ini adalah setState()
+    
+    componentWillUnmount : Fungsi yang dipanggil ketika component di-unmount. Use case yang menggunakan ini adalah untuk cleanup seperti invalidating timers, canceling network request atau cleaning up terhadap subscription yang dibuat di componentDidMount
+
