@@ -18,12 +18,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT", "ADMIN")
-                .antMatchers("/user/addUser").hasAnyAuthority("ADMIN")
-                .antMatchers("/menu/**").hasAnyAuthority("MERCHANT")
+                .antMatchers("/**").permitAll()
+                // .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT", "ADMIN")
+                // .antMatchers("/user/addUser").hasAnyAuthority("ADMIN")
+                // .antMatchers("/menu/**").hasAnyAuthority("MERCHANT")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -36,14 +38,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    // @Autowired
-    // public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception{
-    //     auth.inMemoryAuthentication()
-    //             .passwordEncoder(encoder())
-    //             .withUser("nadiem").password(encoder().encode("makarim"))
-    //             .roles("USER");
+    @Autowired
+    public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception{
+        auth.inMemoryAuthentication()
+                .passwordEncoder(encoder())
+                .withUser("nadiem").password(encoder().encode("makarim"))
+                .roles("USER");
 
-    // }
+    }
     @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
