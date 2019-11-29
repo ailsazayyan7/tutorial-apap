@@ -100,6 +100,7 @@ public class RestoranControllerTest {
                 .andExpect(model().attribute("namaResto", is(nama)));
     }
 
+
     @Test
     public void whenViewRestoranByIdAccessItShouldShowTheRestoranData() throws Exception {
         RestoranModel restoran = generateDummyRestoranModel(1);

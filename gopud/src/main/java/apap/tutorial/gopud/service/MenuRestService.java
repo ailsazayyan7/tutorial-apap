@@ -1,3 +1,4 @@
+
 package apap.tutorial.gopud.service;
 
 import apap.tutorial.gopud.model.MenuModel;
@@ -18,3 +19,4 @@ public interface MenuRestService {
 
     void deleteMenu(Long id);
 }
+

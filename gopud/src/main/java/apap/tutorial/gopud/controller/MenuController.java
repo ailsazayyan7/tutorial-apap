@@ -50,16 +50,6 @@ INI YG TUTORIAL-4
     }
 
 
-
-    /*@RequestMapping(value = "menu/add/{idRestoran}", method = RequestMethod.POST, params={"save"})
-    private String addProductSubmit(@ModelAttribute RestoranModel restoran, Model model){
-        RestoranModel resto = restoranService.getRestoranByIdRestoran(restoran.getIdRestoran()).get();
-        for (MenuModel menu : restoran.getListMenu()){
-            menu.setRestoran(resto);
-            menuService.addMenu(menu);
-        }
-        return "add-menu";
-    }*/
     @RequestMapping(value = "/menu/add/{restoranId}", params={"save"}, method = RequestMethod.POST)
     private String addMenuSubmit(@ModelAttribute RestoranModel restoran, Model model){
         RestoranModel curr = restoranService.getRestoranByIdRestoran(restoran.getIdRestoran()).get();

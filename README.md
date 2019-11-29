@@ -230,7 +230,6 @@ Kemudian, kita membuat fungsi handleToggle untuk mengatur tampilan favList yang 
 Nantinya fungsi tersebut akan digunakan pada bagian berikut:
 <img src="4.jpg"/>
 
-
 ## Tutorial 9
 1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut? 
 - Langkah yang dilakukan untuk menyelesaikan LATIHAN no.1 adalah dengan memodifikasi Stores.js yaitu dengan menambahkan beberapa line code pada method async addStore() yaitu dengan membuat state dari nama, keterangan dan followers menjadi "" yang sebelumnya diisi pada bagian form ketika menambahkan store. Lalu pada bagian form, ditambahkan atribut value dengan menyimpan state dari nama, keterangan dan followers. Hal tersebut dilakukan karena ketika menampilkan form value yang ditampilkan pada form tersebut berdasarkan state saat ini untuk nama, keterangan dan followers. Sehingga agar isinya menjadi kosong ketika telah usai add store. Maka perlu direset state tersebut dengan menjadikan value dari state tersebut menjadi ""
@@ -266,3 +265,4 @@ Langkah 4
     componentWillReceiveProps : Fungsi ini dijalankan sebelum mounted component menerima props yang baru. Biasanya fungsi ini digunakan apabila ingin melakukan setState terhadap perubahan props. Fungsi ini dipanggil ketika terjadi update pada props saja. Biasanya use case yang menggunakan ini adalah setState()
     
     componentWillUnmount : Fungsi yang dipanggil ketika component di-unmount. Use case yang menggunakan ini adalah untuk cleanup seperti invalidating timers, canceling network request atau cleaning up terhadap subscription yang dibuat di componentDidMount
+

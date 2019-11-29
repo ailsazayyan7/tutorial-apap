@@ -1,3 +1,4 @@
+
 package apap.tutorial.gopud.service;
 
 import apap.tutorial.gopud.model.RestoranModel;
@@ -24,3 +25,4 @@ public interface RestoranRestService {
 
     Mono<RecipeResponse> retrieveRecipes(String excludeIngredient);
 }
+

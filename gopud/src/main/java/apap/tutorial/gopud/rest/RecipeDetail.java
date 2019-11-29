@@ -1,3 +1,4 @@
+
 package apap.tutorial.gopud.rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -44,3 +45,4 @@ public class RecipeDetail {
     }
 
 }
+
